@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+dlss_run.log
+_selftest.txt
+
+export_dbg.log
