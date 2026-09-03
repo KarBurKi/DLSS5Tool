@@ -38,14 +38,17 @@ DLSS5 简约工具
   注意: 开皮肤双通道时瓶颈在 CPU 遮罩(MediaPipe)而非显卡——换更强的显卡不会
   明显更快; 想提速可关双通道或用中/低档(隔帧复用遮罩)。
 
-【打包 EXE】
-  python -m pip install pyinstaller, 然后在工具目录运行:
+【打包 EXE / 下载 EXE】
+  现成的 EXE 版已上传本仓库 Releases(v1.0.0): DLSS5Tool-v1.0.0-win64.zip(下载 218MB,
+  解压后约 440MB), 解压到任意目录双击 DLSS5Tool.exe 即用。
+
+  自行打包: python -m pip install pyinstaller, 然后在工具目录运行:
     python -m PyInstaller --noconfirm --windowed --onedir --name DLSS5Tool
       --add-binary "dlssnr_host.dll;." --add-binary "nvngx_dlssnr.dll;."
       --add-data "models;models" --add-data "README.txt;."
       --collect-all mediapipe --exclude-module matplotlib gui.py
   (mediapipe 是函数内延迟 import, 必须 --collect-all 才打得进去)
-  产物 dist\DLSS5Tool\(约 440MB)零依赖: 对方电脑只需 Windows 10/11 + NVIDIA 驱动,
+  产物 dist\DLSS5Tool\ 零依赖: 对方电脑只需 Windows 10/11 + NVIDIA 驱动,
   整个文件夹一起拷贝, 别单独拽 exe。自检: "DLSS5Tool.exe --selftest" 应在 exe 旁
   生成 _selftest.txt 并含 DLSS_OK 与 SKIN_OK 两行。
 
